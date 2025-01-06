@@ -1,0 +1,85 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Display Admin Notice </title>
+		<link rel="manifest" href="manifest.json" />
+	</head>
+
+	<body style="margin: 0; padding: 0">
+		<header
+			style="
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 4px;
+				height: 30px;
+				border-bottom: 1px solid #e0e0e0;
+			"
+		>
+			<h1>Display Admin Notice </h1>
+			<button id="install" hidden>Install</button>
+		</header>
+		<iframe
+			id="wp"
+			style="width: 100%; height: calc(100vh - 39px); border: 0"
+		></iframe>
+		<script type="module" async>
+            /**
+             * Install PWA button
+             */
+            let installPrompt = null;
+            const installButton = document.getElementById("install");
+            window.addEventListener("beforeinstallprompt", (event) => {
+                event.preventDefault();
+                installPrompt = event;
+                installButton.removeAttribute("hidden");
+            });
+            installButton.addEventListener("click", async () => {
+                if (!installPrompt) {
+                    return;
+                }
+                const result = await installPrompt.prompt();
+                disableInAppInstallPrompt();
+            });
+
+            function disableInAppInstallPrompt() {
+                installPrompt = null;
+                installButton.setAttribute("hidden", "");
+            }
+
+            // Boot Playground
+                import { startPlaygroundWeb } from "https://playground.wordpress.net/client/index.js";
+            const client = await startPlaygroundWeb({
+                iframe: document.getElementById("wp"),
+                remoteUrl: `https://playground.wordpress.net/remote.html`,
+                blueprint: {
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Display Admin Notice ",
+    "description": "Blueprint to add a tiny mu-plugin and display an admin notice",
+    "author": "bph",
+    "categories": [
+      "Admin",
+      "notices"
+    ]
+  },
+  "landingPage": "/wp-admin/plugins.php",
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/bgnightly-notice.php",
+      "data": "<?php add_action('admin_notices', function() {  echo '<div class=\"notice notice-info is-dismissible\"><p>Hello from Playground.</p></div>'; });"
+    }
+  ]
+}
+            });
+            await client.isReady();
+		</script>
+	</body>
+</html>

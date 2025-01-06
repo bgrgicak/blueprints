@@ -1,0 +1,35 @@
+{
+    "name": "Loading, activating, and configuring a theme from a GitHub repository.",
+    "short_name": "Loading,",
+    "description": "This is a good example of typical steps used on a theme's loading, activation and configuration",
+    "start_url": "/wp-admin/site-editor.php",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0073aa",
+    "categories": [
+        "rss",
+        "social web"
+    ],
+    "icons": [
+        {
+            "src": "icons/logo-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

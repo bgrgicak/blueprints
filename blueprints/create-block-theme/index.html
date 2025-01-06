@@ -1,0 +1,80 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create Block Theme</title>
+		<link rel="manifest" href="manifest.json" />
+	</head>
+
+	<body style="margin: 0; padding: 0">
+		<header
+			style="
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 4px;
+				height: 30px;
+				border-bottom: 1px solid #e0e0e0;
+			"
+		>
+			<h1>Create Block Theme</h1>
+			<button id="install" hidden>Install</button>
+		</header>
+		<iframe
+			id="wp"
+			style="width: 100%; height: calc(100vh - 39px); border: 0"
+		></iframe>
+		<script type="module" async>
+            /**
+             * Install PWA button
+             */
+            let installPrompt = null;
+            const installButton = document.getElementById("install");
+            window.addEventListener("beforeinstallprompt", (event) => {
+                event.preventDefault();
+                installPrompt = event;
+                installButton.removeAttribute("hidden");
+            });
+            installButton.addEventListener("click", async () => {
+                if (!installPrompt) {
+                    return;
+                }
+                const result = await installPrompt.prompt();
+                disableInAppInstallPrompt();
+            });
+
+            function disableInAppInstallPrompt() {
+                installPrompt = null;
+                installButton.setAttribute("hidden", "");
+            }
+
+            // Boot Playground
+                import { startPlaygroundWeb } from "https://playground.wordpress.net/client/index.js";
+            const client = await startPlaygroundWeb({
+                iframe: document.getElementById("wp"),
+                remoteUrl: `https://playground.wordpress.net/remote.html`,
+                blueprint: {
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Create Block Theme",
+    "description": "Blueprint to install Create Block Theme and start editing right away",
+    "author": "jonathanbossenger",
+    "categories": [
+      "Editor",
+      "theme"
+    ]
+  },
+  "plugins": [
+    "create-block-theme"
+  ],
+  "features": {
+    "networking": true
+  },
+  "login": true,
+  "landingPage": "/wp-admin/site-editor.php"
+}
+            });
+            await client.isReady();
+		</script>
+	</body>
+</html>

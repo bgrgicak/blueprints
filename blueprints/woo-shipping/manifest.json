@@ -1,0 +1,35 @@
+{
+    "name": "Minimal WooCommerce Setup with Sample Products, Shipping, and Payment Method",
+    "short_name": "Minimal",
+    "description": "To create a WordPress Playground instance that installs WooCommerce, adds a custom flat rate shipping method via a plugin, imports WooCommerce sample products XML to demonstrate the shipping method on the cart/checkout pages, and enables the Direct Bank Transfer payment method.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0073aa",
+    "categories": [
+        "rss",
+        "social web"
+    ],
+    "icons": [
+        {
+            "src": "icons/logo-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

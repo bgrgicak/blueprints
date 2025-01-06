@@ -1,0 +1,86 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Set the admin color scheme</title>
+		<link rel="manifest" href="manifest.json" />
+	</head>
+
+	<body style="margin: 0; padding: 0">
+		<header
+			style="
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 4px;
+				height: 30px;
+				border-bottom: 1px solid #e0e0e0;
+			"
+		>
+			<h1>Set the admin color scheme</h1>
+			<button id="install" hidden>Install</button>
+		</header>
+		<iframe
+			id="wp"
+			style="width: 100%; height: calc(100vh - 39px); border: 0"
+		></iframe>
+		<script type="module" async>
+            /**
+             * Install PWA button
+             */
+            let installPrompt = null;
+            const installButton = document.getElementById("install");
+            window.addEventListener("beforeinstallprompt", (event) => {
+                event.preventDefault();
+                installPrompt = event;
+                installButton.removeAttribute("hidden");
+            });
+            installButton.addEventListener("click", async () => {
+                if (!installPrompt) {
+                    return;
+                }
+                const result = await installPrompt.prompt();
+                disableInAppInstallPrompt();
+            });
+
+            function disableInAppInstallPrompt() {
+                installPrompt = null;
+                installButton.setAttribute("hidden", "");
+            }
+
+            // Boot Playground
+                import { startPlaygroundWeb } from "https://playground.wordpress.net/client/index.js";
+            const client = await startPlaygroundWeb({
+                iframe: document.getElementById("wp"),
+                remoteUrl: `https://playground.wordpress.net/remote.html`,
+                blueprint: {
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Set the admin color scheme",
+    "description": "Set the admin color scheme to Modern using the updateUserMeta step.",
+    "author": "ndiego",
+    "categories": [
+      "user meta"
+    ]
+  },
+  "preferredVersions": {
+    "php": "8.0",
+    "wp": "latest"
+  },
+  "landingPage": "/wp-admin/?welcome=0",
+  "login": true,
+  "steps": [
+    {
+      "step": "updateUserMeta",
+      "meta": {
+        "admin_color": "modern"
+      },
+      "userId": 1
+    }
+  ]
+}
+            });
+            await client.isReady();
+		</script>
+	</body>
+</html>

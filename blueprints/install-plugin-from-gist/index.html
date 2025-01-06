@@ -1,0 +1,93 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Install plugin from a gist</title>
+		<link rel="manifest" href="manifest.json" />
+	</head>
+
+	<body style="margin: 0; padding: 0">
+		<header
+			style="
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 4px;
+				height: 30px;
+				border-bottom: 1px solid #e0e0e0;
+			"
+		>
+			<h1>Install plugin from a gist</h1>
+			<button id="install" hidden>Install</button>
+		</header>
+		<iframe
+			id="wp"
+			style="width: 100%; height: calc(100vh - 39px); border: 0"
+		></iframe>
+		<script type="module" async>
+            /**
+             * Install PWA button
+             */
+            let installPrompt = null;
+            const installButton = document.getElementById("install");
+            window.addEventListener("beforeinstallprompt", (event) => {
+                event.preventDefault();
+                installPrompt = event;
+                installButton.removeAttribute("hidden");
+            });
+            installButton.addEventListener("click", async () => {
+                if (!installPrompt) {
+                    return;
+                }
+                const result = await installPrompt.prompt();
+                disableInAppInstallPrompt();
+            });
+
+            function disableInAppInstallPrompt() {
+                installPrompt = null;
+                installButton.setAttribute("hidden", "");
+            }
+
+            // Boot Playground
+                import { startPlaygroundWeb } from "https://playground.wordpress.net/client/index.js";
+            const client = await startPlaygroundWeb({
+                iframe: document.getElementById("wp"),
+                remoteUrl: `https://playground.wordpress.net/remote.html`,
+                blueprint: {
+  "meta": {
+    "title": "Install plugin from a gist",
+    "author": "zieladam",
+    "description": "Install and activate a WordPress plugin from a .php file stored in a gist.",
+    "categories": [
+      "plugins"
+    ]
+  },
+  "landingPage": "/wp-admin/plugins.php",
+  "preferredVersions": {
+    "wp": "beta",
+    "php": "8.0"
+  },
+  "steps": [
+    {
+      "step": "login"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/plugins/0-plugin.php",
+      "data": {
+        "resource": "url",
+        "url": "https://gist.githubusercontent.com/ndiego/456b74b243d86c97cda89264c68cbdee/raw/ff00cf25e6eebe4f5a4eaecff10286f71e65340b/block-hooks-demo.php"
+      }
+    },
+    {
+      "step": "activatePlugin",
+      "pluginName": "Block Hooks Demo",
+      "pluginPath": "0-plugin.php"
+    }
+  ]
+}
+            });
+            await client.isReady();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+{
+    "name": "Use wp-cli to add a post with image",
+    "short_name": "Use",
+    "description": "Use wp-cli to create a post from text file with block markup and a featured image",
+    "start_url": "/?p=4",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0073aa",
+    "categories": [
+        "rss",
+        "social web"
+    ],
+    "icons": [
+        {
+            "src": "icons/logo-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

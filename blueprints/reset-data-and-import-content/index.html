@@ -1,0 +1,111 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Reset data and import content (with logs)</title>
+		<link rel="manifest" href="manifest.json" />
+	</head>
+
+	<body style="margin: 0; padding: 0">
+		<header
+			style="
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 4px;
+				height: 30px;
+				border-bottom: 1px solid #e0e0e0;
+			"
+		>
+			<h1>Reset data and import content (with logs)</h1>
+			<button id="install" hidden>Install</button>
+		</header>
+		<iframe
+			id="wp"
+			style="width: 100%; height: calc(100vh - 39px); border: 0"
+		></iframe>
+		<script type="module" async>
+            /**
+             * Install PWA button
+             */
+            let installPrompt = null;
+            const installButton = document.getElementById("install");
+            window.addEventListener("beforeinstallprompt", (event) => {
+                event.preventDefault();
+                installPrompt = event;
+                installButton.removeAttribute("hidden");
+            });
+            installButton.addEventListener("click", async () => {
+                if (!installPrompt) {
+                    return;
+                }
+                const result = await installPrompt.prompt();
+                disableInAppInstallPrompt();
+            });
+
+            function disableInAppInstallPrompt() {
+                installPrompt = null;
+                installButton.setAttribute("hidden", "");
+            }
+
+            // Boot Playground
+                import { startPlaygroundWeb } from "https://playground.wordpress.net/client/index.js";
+            const client = await startPlaygroundWeb({
+                iframe: document.getElementById("wp"),
+                remoteUrl: `https://playground.wordpress.net/remote.html`,
+                blueprint: {
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Reset data and import content (with logs)",
+    "description": "It resets default data before importing custom content. It also logs the state of the content after each step.",
+    "author": "juanmaguitar",
+    "categories": [
+      "reset",
+      "log",
+      "debug",
+      "debug",
+      "import",
+      "content"
+    ]
+  },
+  "landingPage": "/wp-admin/edit.php",
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/log_content_state.php",
+      "data": "<?php  /* log_content_state() definition */  namespace MyPlayground\\Utils\\Debug; require '/wordpress/wp-load.php'; function log_content_state($message) { $args = ['post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => -1]; $posts = get_posts($args); error_log($message); if (!empty($posts)) { $last_post = $posts[count($posts) - 1]; error_log(count($posts) . ' posts - Last Post title: ' . $last_post->post_title); } else { error_log('No posts found'); } }"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php /* Log state content by default */ require '/wordpress/wp-load.php'; MyPlayground\\Utils\\Debug\\log_content_state('Last post by default');"
+    },
+    {
+      "step": "resetData"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php /* Log state content after resetData */  require '/wordpress/wp-load.php'; MyPlayground\\Utils\\Debug\\log_content_state('Last post after resetData');"
+    },
+    {
+      "step": "importWxr",
+      "file": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/wordpress-juanmaguitar/blueprints/trunk/blueprints/reset-data-and-import-content/starter-content.xml"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php /* Log state content after importWxr */ require '/wordpress/wp-load.php'; MyPlayground\\Utils\\Debug\\log_content_state('Last post after importWxr');"
+    }
+  ]
+}
+            });
+            await client.isReady();
+		</script>
+	</body>
+</html>
