@@ -1,0 +1,32 @@
+{
+  "name": "Feed Reader with Friends",
+  "short_name": "Feed Reader",
+  "description": "A feed reader using the Friends plugin for WordPress, supporting RSS and ActivityPub",
+  "start_url": "/friends/?refresh&welcome",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0073aa",
+  "categories": ["rss", "social web"],
+  "icons": [
+    {
+      "src": "icons/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
