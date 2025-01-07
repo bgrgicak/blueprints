@@ -2,7 +2,7 @@
     "name": "Demo of Twenty-Twenty-Five theme",
     "short_name": "Demo",
     "description": "Blueprint with demo content for the Twenty-Twenty-Five default theme",
-    "start_url": "/",
+    "start_url": "/blueprints/tt5-demo/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

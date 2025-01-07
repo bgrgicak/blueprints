@@ -2,7 +2,7 @@
     "name": "Import Theme Starter Content",
     "short_name": "Import",
     "description": "Blueprint to install a theme with starter content, (here: Twenty-Twenty-One)",
-    "start_url": "/",
+    "start_url": "/blueprints/theme-starter-content/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

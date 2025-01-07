@@ -2,7 +2,7 @@
     "name": "Latest Gutenberg plugin",
     "short_name": "Latest",
     "description": "A preview of the latest version of the Gutenberg plugin.",
-    "start_url": "/",
+    "start_url": "/blueprints/latest-gutenberg/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

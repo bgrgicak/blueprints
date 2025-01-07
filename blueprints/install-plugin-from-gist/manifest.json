@@ -2,7 +2,7 @@
     "name": "Install plugin from a gist",
     "short_name": "Install",
     "description": "Install and activate a WordPress plugin from a .php file stored in a gist.",
-    "start_url": "/wp-admin/plugins.php",
+    "start_url": "/blueprints/install-plugin-from-gist/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

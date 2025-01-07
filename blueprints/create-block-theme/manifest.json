@@ -2,7 +2,7 @@
     "name": "Create Block Theme",
     "short_name": "Create",
     "description": "Blueprint to install Create Block Theme and start editing right away",
-    "start_url": "/wp-admin/site-editor.php",
+    "start_url": "/blueprints/create-block-theme/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

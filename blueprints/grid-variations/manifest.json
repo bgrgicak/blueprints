@@ -2,7 +2,7 @@
     "name": "Grid Variations Experiments enabled",
     "short_name": "Grid",
     "description": "Blueprint example to toggle on enable a feature from the Experiments page in Gutenberg plugin",
-    "start_url": "/wp-admin/site-editor.php",
+    "start_url": "/blueprints/grid-variations/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

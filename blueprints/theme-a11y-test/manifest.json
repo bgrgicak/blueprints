@@ -2,7 +2,7 @@
     "name": "Theme Tester",
     "short_name": "Theme",
     "description": "Blueprint example to add content and plugins to explore a theme",
-    "start_url": "/",
+    "start_url": "/blueprints/theme-a11y-test/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

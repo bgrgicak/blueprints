@@ -2,7 +2,7 @@
     "name": "Install WordPress language packs",
     "short_name": "Install",
     "description": "Installs and activates the latest WordPress Japanese translation pack from https://translate.wordpress.org/ – both for WordPress core and for the friends plugin.",
-    "start_url": "/wp-admin/?welcome=0",
+    "start_url": "/blueprints/translations/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

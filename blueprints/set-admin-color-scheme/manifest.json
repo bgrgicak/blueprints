@@ -2,7 +2,7 @@
     "name": "Set the admin color scheme",
     "short_name": "Set",
     "description": "Set the admin color scheme to Modern using the updateUserMeta step.",
-    "start_url": "/wp-admin/?welcome=0",
+    "start_url": "/blueprints/set-admin-color-scheme/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

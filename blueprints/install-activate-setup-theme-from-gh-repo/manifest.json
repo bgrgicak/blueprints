@@ -2,7 +2,7 @@
     "name": "Loading, activating, and configuring a theme from a GitHub repository.",
     "short_name": "Loading,",
     "description": "This is a good example of typical steps used on a theme's loading, activation and configuration",
-    "start_url": "/wp-admin/site-editor.php",
+    "start_url": "/blueprints/install-activate-setup-theme-from-gh-repo/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

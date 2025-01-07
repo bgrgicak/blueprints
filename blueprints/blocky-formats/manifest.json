@@ -2,7 +2,7 @@
     "name": "Markdown and Trac Syntax Editor",
     "short_name": "Markdown",
     "description": "Edit Markdown and Trac formatting in the block editor thanks to the blocky-formats plugin!",
-    "start_url": "/wp-admin/post-new.php",
+    "start_url": "/blueprints/blocky-formats/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

@@ -2,7 +2,7 @@
     "name": "Custom Post Type: Books",
     "short_name": "Custom",
     "description": "Blueprint that added a custom post type to playground",
-    "start_url": "/wp-admin/",
+    "start_url": "/blueprints/custom-post/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

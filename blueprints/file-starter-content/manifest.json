@@ -2,7 +2,7 @@
     "name": "Import a standalone starter content via a blueprint step",
     "short_name": "Import",
     "description": "Blueprint to use a stand-alone starter content file and then to import it. Click on 'Subscriptions'",
-    "start_url": "/",
+    "start_url": "/blueprints/file-starter-content/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

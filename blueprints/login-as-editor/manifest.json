@@ -2,7 +2,7 @@
     "name": "Login as an editor",
     "short_name": "Login",
     "description": "Test WordPress functionality as an editor rather than an administrator.",
-    "start_url": "/wp-admin/",
+    "start_url": "/blueprints/login-as-editor/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

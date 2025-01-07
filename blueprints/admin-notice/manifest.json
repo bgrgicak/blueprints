@@ -2,7 +2,7 @@
     "name": "Display Admin Notice ",
     "short_name": "Display",
     "description": "Blueprint to add a tiny mu-plugin and display an admin notice",
-    "start_url": "/wp-admin/plugins.php",
+    "start_url": "/blueprints/admin-notice/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

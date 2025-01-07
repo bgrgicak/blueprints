@@ -2,7 +2,7 @@
     "name": "Use wp-cli to add a post with image",
     "short_name": "Use",
     "description": "Use wp-cli to create a post from text file with block markup and a featured image",
-    "start_url": "/?p=4",
+    "start_url": "/blueprints/wpcli-post-with-image/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

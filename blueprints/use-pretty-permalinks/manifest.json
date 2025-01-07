@@ -2,7 +2,7 @@
     "name": "Pretty permalinks",
     "short_name": "Pretty",
     "description": "Set the permalink structure to use pretty permalinks.",
-    "start_url": "/category/uncategorized/",
+    "start_url": "/blueprints/use-pretty-permalinks/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

@@ -6,7 +6,8 @@
 		<link rel="manifest" href="manifest.json" />
         <style>
             :root {
-                --header-height: 55px;
+                --header-height: 39px;
+                --header-padding: 8px;
             }
 
             body {
@@ -19,7 +20,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 8px;
+                padding: var(--header-padding);
                 background-color: #1e2327;
             }
 
@@ -44,7 +45,7 @@
 
             #wp {
                 width: 100%;
-                height: calc(100vh - var(--header-height));
+                height: calc(100vh - var(--header-height) - (2 * var(--header-padding)));
                 border: 0;
             }
 
@@ -64,6 +65,8 @@
 		</header>
 		<iframe id="wp"></iframe>
 		<script type="module" async>
+            const slug = "posts-via-wp-cli";
+
             /**
              * Install PWA button
              */
@@ -74,7 +77,7 @@
             window.addEventListener("beforeinstallprompt", (event) => {
                 event.preventDefault();
                 installPrompt = event;
-                if (isInstallHeaderHidden()) {
+                if (localStorage.getItem(`hide-install-header-for-${slug}`) === 'true') {
                     hideInstallHeader();
                 } else {
                     showInstallHeader();
@@ -89,15 +92,9 @@
                 hideInstallHeader();
             });
             closeInstallButton.addEventListener("click", () => {
-                saveHideInstallHeader();
+                localStorage.setItem(`hide-install-header-for-${slug}`, 'true');
                 hideInstallHeader();
             });
-            function saveHideInstallHeader() {
-                localStorage.setItem("hideInstallHeader", "true");
-            }
-            function isInstallHeaderHidden() {
-                return localStorage.getItem("hideInstallHeader") === "true";
-            }
             function hideInstallHeader() {
                 document.body.classList.add("hide-install-header");
             }
@@ -107,9 +104,27 @@
 
             // Boot Playground
             import { startPlaygroundWeb } from "https://playground.wordpress.net/client/index.js";
+
+            function isWordPressInstalled(slug) {
+                return localStorage.getItem(`wordpress-installed-for-${slug}`) === 'true';
+            }
+            function setWordPressInstalled(slug) {
+                localStorage.setItem(`wordpress-installed-for-${slug}`, 'true');
+            }
+            const shouldInstallWordPress = !isWordPressInstalled(slug);
             const client = await startPlaygroundWeb({
                 iframe: document.getElementById("wp"),
                 remoteUrl: `https://playground.wordpress.net/remote.html`,
+                mounts: [
+                    {
+                        mountpoint: '/wordpress',
+                        device: {
+                            type: 'opfs',
+                            path: `/pwa-sites/${slug}`,
+                        },
+                    },
+                ],
+                shouldInstallWordPress,
                 blueprint: {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
   "meta": {
@@ -136,6 +151,9 @@
 }
             });
             await client.isReady();
+            if (shouldInstallWordPress) {
+                setWordPressInstalled(slug);
+            }
 		</script>
 	</body>
 </html>

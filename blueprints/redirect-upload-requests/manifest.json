@@ -2,7 +2,7 @@
     "name": "Serve media files from another host",
     "short_name": "Serve",
     "description": "Redirect any requests to files within the uploads directory to an external host. This is useful when you have a lot of image attachments in your playground but don’t want to include them all in the blueprint.",
-    "start_url": "/category/uncategorized/",
+    "start_url": "/blueprints/redirect-upload-requests/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

@@ -2,7 +2,7 @@
     "name": "Feed Reader with the Friends Plugin",
     "short_name": "Feed",
     "description": "By using the Friends plugin and a CORS proxy, you can read feeds from the web in Playground, and even via ActivityPub",
-    "start_url": "/friends/?refresh&welcome",
+    "start_url": "/blueprints/friends-cors/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

@@ -2,7 +2,7 @@
     "name": "WordPress Beta",
     "short_name": "WordPress",
     "description": "Test the latest WordPress Beta or RC release with theme test data and debugging plugins. Only loads the Beta version during the Beta period.",
-    "start_url": "/",
+    "start_url": "/blueprints/beta-rc/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

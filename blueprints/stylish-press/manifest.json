@@ -2,7 +2,7 @@
     "name": "Stylish Press",
     "short_name": "Stylish",
     "description": "A Woo store with custom theme, content, and products.",
-    "start_url": "/shop",
+    "start_url": "/blueprints/stylish-press/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

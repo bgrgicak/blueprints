@@ -2,7 +2,7 @@
     "name": "WooCommerce product feed",
     "short_name": "WooCommerce",
     "description": "Blueprint to create a WooCommerce product and export an XML/CSV product feed",
-    "start_url": "/wp-admin/admin.php?page=webtoffee_product_feed_main_export",
+    "start_url": "/blueprints/woocommerce-product-feed/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",

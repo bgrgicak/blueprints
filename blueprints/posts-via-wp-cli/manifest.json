@@ -2,7 +2,7 @@
     "name": "Use wp-cli command to add posts",
     "short_name": "Use",
     "description": "Blueprint example to add posts via a wp-cli command.",
-    "start_url": "/wp-admin/edit.php",
+    "start_url": "/blueprints/posts-via-wp-cli/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0073aa",
